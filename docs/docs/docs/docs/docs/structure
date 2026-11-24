@@ -1,0 +1,21 @@
+bridgedoctor/
+│
+├── README.md
+├── .gitignore
+│
+├── docs/
+│   ├── problem-statement.md
+│   ├── solution-overview.md
+│   ├── architecture.md
+│   ├── security-and-privacy.md
+│   ├── research-and-references.md
+│   └── roadmap.md
+│
+├── extension/
+│   └── README.md
+│
+├── native-host/
+│   └── README.md
+│
+└── diagnostic-engine/
+    └── README.md
