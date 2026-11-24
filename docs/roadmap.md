@@ -26,11 +26,16 @@
 - Explore supported PKCS#11 checks.
 - Use SoftHSM2 for controlled token simulation.
 
-## Phase 6 — Testing
+## Phase 6 — Evidence-Based Diagnostic Report
+- Correlate multi-layer observations using rule-based evaluation.
+- Present observed evidence, likely causes, confidence levels, and undetermined outcomes.
+- Generate recommended next actions for taxpayers and support personnel.
+
+## Phase 7 — Controlled Testing and Demonstration
 - Test a healthy local-service scenario.
 - Test a service-unavailable scenario.
 - Test an insufficient-evidence scenario.
-- Document limitations and results.
+- Document limitations and evaluation results.
 
 ## Development Principle
 

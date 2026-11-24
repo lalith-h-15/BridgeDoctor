@@ -78,8 +78,8 @@ Evaluates the collected evidence using predefined diagnostic rules and produces 
 | Local diagnostic application | Windows-compatible application |
 | Diagnostic logic | Rule-based diagnostic engine |
 | Certificate inspection | Node.js TLS capabilities |
-| Token interface | PKCS#11, where supported |
-| Token simulation | SoftHSM2 for controlled testing |
+| Token interface | PKCS#11 (interface standard, where supported) |
+| Token simulation | SoftHSM2 for controlled testing (software token simulation) |
 | Version control | Git and GitHub |
 
 The exact implementation choices may evolve during development.
@@ -87,37 +87,24 @@ The exact implementation choices may evolve during development.
 ## 5. Architecture
 
 ```text
-             GST Portal
-                 |
-                 v
-         Chrome Browser
-                 |
-                 v
-       BridgeDoctor Extension
-          (Manifest V3)
-                 |
-                 v
-         Native Messaging
-                 |
-                 v
-        Windows Native Host
-                 |
-       +---------+----------+
-       |         |          |
-       v         v          v
-    Process    Port/TLS   Token checks
-     checks    checks    (if supported)
-       |         |          |
-       +---------+----------+
-                 |
-                 v
-          Diagnostic Engine
-                 |
-                 v
-        Evidence-based Report
-                 |
-                 v
-       Likely Cause + Next Step
+GST Portal
+    |
+Chrome Browser
+    |
+BridgeDoctor Extension
+    |
+Chrome Native Messaging
+    |
+Windows Native Host
+    |
+    +-- Process Diagnostics
+    +-- Port Diagnostics
+    +-- TLS Certificate Inspection
+    +-- Supported Token Checks
+    |
+Diagnostic Engine
+    |
+Evidence-based Diagnostic Report
 ```
 
 ## 6. What Makes BridgeDoctor Different?
@@ -153,11 +140,15 @@ BridgeDoctor is designed around a diagnostic-only approach.
 
 The initial scope focuses on Windows and the Chrome browser.
 
-Some diagnostic capabilities depend on the installed signing application, operating-system configuration and vendor-specific PKCS#11 modules.
+Port 1585 is the initial diagnostic target based on standard GST troubleshooting guidance; other ports must be configurable and validated before being presented as supported defaults.
 
-SoftHSM2 may be used to simulate token-related scenarios during development. Such simulation does not establish compatibility with physical DSC tokens.
+PKCS#11 is an interface standard, not a physical token. Physical token checks depend on installed vendor middleware.
+
+SoftHSM2 may be used to simulate token-related scenarios during development. Such software-token simulation does not establish compatibility with physical DSC tokens.
 
 TLS certificate inspection can report certificate properties, but does not by itself prove that Chrome trusts the certificate.
+
+BridgeDoctor is strictly a diagnostic assistant, not a signing application. It does not perform digital signatures or handle cryptographic keys.
 
 BridgeDoctor will report uncertainty rather than claim a definitive diagnosis when the available evidence is insufficient.
 
@@ -179,7 +170,9 @@ The initial hackathon prototype will prioritize a small number of real, testable
 
 **Team Name:** NextGen Coders
 
-**Project:** BridgeDoctor
+- Lalith Raj B H — Team Lead
+- K Sahana
+- Keerthi Vasan
 
 ## 11. Project Status
 

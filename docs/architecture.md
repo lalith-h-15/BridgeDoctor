@@ -16,16 +16,13 @@ Chrome Native Messaging
 Windows Native Host
     |
     +-- Process Diagnostics
-    |
     +-- Port Diagnostics
-    |
     +-- TLS Certificate Inspection
-    |
     +-- Supported Token Checks
     |
 Diagnostic Engine
     |
-Evidence-based Report
+Evidence-based Diagnostic Report
 ```
 
 ## Component Responsibilities
