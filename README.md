@@ -189,6 +189,14 @@ The proposed architecture and diagnostic approach are documented here. Implement
 - [PKCS#11 Specification](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.1/os/pkcs11-base-v3.1-os.html)
 - [SoftHSM2](https://github.com/softhsm/SoftHSMv2)
 
+## Interactive prototype
+
+A runnable demonstration of the proposed diagnostic experience lives in [`prototype/`](prototype/README.md). It uses simulated data only and is not a real system diagnostic.
+
+```bash
+cd prototype && npm install && npm run dev
+```
+
 ---
 
 **BridgeDoctor — Making digital-signature failures easier to understand.**

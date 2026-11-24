@@ -1,0 +1,106 @@
+/* Guided demo: floating, non-modal panel. It never blocks the page behind it. */
+.guided {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: min(380px, calc(100vw - 24px));
+  background: rgba(10, 15, 28, 0.97);
+  border: 1px solid var(--cyan);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(34, 211, 238, 0.15);
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  animation: guided-in 0.25s ease-out;
+}
+@keyframes guided-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.guided-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guided-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.guided-dots {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+}
+.guided-dots li {
+  flex: 1;
+  height: 3px;
+  background: var(--line-strong);
+  border-radius: 2px;
+}
+.guided-dots li.is-done {
+  background: rgba(34, 211, 238, 0.55);
+}
+.guided-dots li.is-on {
+  background: var(--cyan);
+}
+.guided-title {
+  font-size: 18px;
+}
+.guided-body {
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.guided .btn-primary {
+  align-self: flex-start;
+}
+.guided-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 4px;
+}
+.guided-foot {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+/* Spotlight: an outline on the element the current step is about. */
+html[data-demo-focus='hero'] [data-demo='hero'],
+html[data-demo-focus='scenarios'] [data-demo='scenarios'],
+html[data-demo-focus='run'] [data-demo='run'],
+html[data-demo-focus='diagram'] [data-demo='diagram'],
+html[data-demo-focus='inspector'] [data-demo='inspector'],
+html[data-demo-focus='rules'] [data-demo='rules'],
+html[data-demo-focus='actions'] [data-demo='actions'],
+html[data-demo-focus='compare'] [data-demo='compare'] {
+  outline: 2px solid var(--cyan);
+  outline-offset: 6px;
+  border-radius: var(--radius);
+  animation: spot 1.8s ease-in-out infinite;
+}
+@keyframes spot {
+  50% {
+    outline-color: rgba(34, 211, 238, 0.35);
+  }
+}
+
+@media (max-width: 600px) {
+  .guided {
+    right: 8px;
+    left: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+}
